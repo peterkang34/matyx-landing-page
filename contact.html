@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Matyx</title>
+<meta name="description" content="Tell us about your water treatment dealership. We'll map your market, give you straight answers, and show you exactly where the growth is.">
+
+<link rel="icon" type="image/svg+xml" href="assets/logos/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Archivo:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+
+<style>
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+.contact-hero { background: var(--off-white); border-bottom: 1px solid var(--hairline-dark); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr .95fr;
+  gap: clamp(36px, 5vw, 80px);
+  align-items: start;
+  padding-block: clamp(48px, 6vw, 88px);
+}
+.contact-copy .eyebrow { color: var(--matyx-blue); margin-bottom: 18px; display: block; }
+.contact-h1 { color: var(--navy); font-size: clamp(30px, 3.6vw, 52px); max-width: 14ch; }
+.contact-sub { margin-top: 20px; font-size: 16px; color: var(--midnight); max-width: 46ch; }
+
+.expect { margin-top: clamp(28px, 4vw, 44px); }
+.expect h2 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: .6;
+  margin-bottom: 4px;
+}
+.expect-list { list-style: none; border-top: 1px solid var(--hairline-dark); margin-top: 10px; }
+.expect-list li { padding: 14px 0; border-bottom: 1px solid var(--hairline-dark); display: flex; gap: 14px; align-items: baseline; }
+.expect-list li::before { content: "→"; color: var(--matyx-blue); font-family: var(--font-mono); font-size: 12px; flex: none; }
+.expect-list strong { color: var(--navy); font-size: 14.5px; display: block; }
+.expect-list span { font-size: 13.5px; color: var(--midnight); }
+
+.steps { margin-top: clamp(28px, 4vw, 44px); }
+.steps h2 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: .6;
+  margin-bottom: 14px;
+}
+.steps ol { list-style: none; display: grid; gap: 12px; }
+.steps li { display: flex; gap: 14px; align-items: baseline; font-size: 14px; color: var(--midnight); }
+.steps .n {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--matyx-blue);
+  border: 1px solid var(--hairline-dark);
+  width: 26px; height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--white);
+}
+.contact-info { margin-top: clamp(28px, 4vw, 44px); font-size: 14px; }
+.contact-info a { color: var(--navy); font-weight: 500; border-bottom: 1px solid var(--hairline-dark); }
+.contact-info a:hover { color: var(--matyx-blue); border-color: var(--matyx-blue); }
+.contact-info p { margin-top: 6px; color: var(--midnight); }
+
+/* form card */
+.form-card {
+  background: var(--white);
+  border: 1px solid var(--hairline-dark);
+  padding: clamp(24px, 3vw, 40px);
+  position: sticky;
+  top: 84px;
+}
+.form-card .form-head { margin-bottom: 22px; }
+.form-card .form-head h2 { font-family: var(--font-display); text-transform: uppercase; font-weight: 500; font-size: 22px; color: var(--navy); line-height: 1.05; }
+.form-card .form-head p { margin-top: 8px; font-size: 13.5px; color: var(--midnight); }
+.field { margin-bottom: 16px; }
+.field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.field input, .field textarea, .field select {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  color: var(--midnight);
+  background: var(--off-white);
+  border: 1px solid var(--hairline-dark);
+  padding: 11px 13px;
+  outline: none;
+  transition: border-color .2s ease, background .2s ease;
+}
+.field input:focus, .field textarea:focus, .field select:focus { border-color: var(--matyx-blue); background: var(--white); }
+.field textarea { resize: vertical; min-height: 96px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-card .btn { width: 100%; justify-content: center; margin-top: 6px; }
+.form-alt { margin-top: 14px; text-align: center; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); opacity: .6; }
+.form-alt a { color: var(--matyx-blue); }
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-card { position: static; }
+  .field-row { grid-template-columns: 1fr; }
+}
+
+/* proof strip below */
+.contact-proof { padding-block: clamp(48px, 6vw, 80px); }
+.contact-quote {
+  border: 1px solid var(--hairline-dark);
+  padding: clamp(24px, 3vw, 40px);
+  display: grid;
+  gap: 16px;
+  max-width: 780px;
+  margin-inline: auto;
+  text-align: center;
+  background: var(--white);
+}
+.contact-quote .stars { color: var(--matyx-blue); font-size: 13px; letter-spacing: 4px; }
+.contact-quote blockquote { font-size: clamp(16px, 1.6vw, 19px); color: var(--navy); font-weight: 500; }
+.contact-quote figcaption { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); opacity: .6; }
+</style>
+</head>
+<body>
+
+<!-- ================= ANNOUNCEMENT ================= -->
+<div class="announce">Lamplight Digital Media is now <em>Matyx</em></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html" aria-label="Matyx home">
+      <img src="assets/logos/logo-primary.svg" alt="Matyx">
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#work">Results</a>
+      <a href="index.html#testimonials">Clients</a>
+      <a href="index.html#packages">Packages</a>
+      <a class="nav-phone" href="tel:+18666710176">(866) 671-0176</a>
+      <a class="btn btn-blue" href="tel:+18666710176">Call Us</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= CONTACT HERO ================= -->
+<section class="contact-hero">
+  <div class="wrap contact-grid">
+    <div class="contact-copy">
+      <span class="eyebrow rv">Contact</span>
+      <h1 class="display contact-h1 rv rv-d1">More booked water tests start here.</h1>
+      <p class="contact-sub rv rv-d2">Tell us about your dealership. We'll map your market, give you straight answers, and show you exactly where the growth is.</p>
+
+      <div class="expect rv rv-d2">
+        <h2>What to expect</h2>
+        <ul class="expect-list">
+          <li><div><strong>A full look at your market</strong><span>Where you rank block by block, how your reviews stack up, and where the leads are going instead.</span></div></li>
+          <li><div><strong>An honest assessment of fit</strong><span>If we're not the right partner — or we already work with a dealer in your market — we'll tell you.</span></div></li>
+          <li><div><strong>A plan tied to installs</strong><span>Cost per lead and cost per install targets. Not impressions, not "brand awareness."</span></div></li>
+        </ul>
+      </div>
+
+      <div class="steps rv rv-d3">
+        <h2>Next steps</h2>
+        <ol>
+          <!-- VET: response-time commitment -->
+          <li><span class="n">1</span>We reply within one business day.</li>
+          <li><span class="n">2</span>A 30-minute fit call — no deck, no pressure.</li>
+          <li><span class="n">3</span>We present your market analysis and plan.</li>
+          <li><span class="n">4</span>Foundation goes live in the first 30 days.</li>
+        </ol>
+      </div>
+
+      <div class="contact-info rv rv-d3">
+        <p><a href="tel:+18666710176">(866) 671-0176</a> &nbsp;&middot;&nbsp; <a href="mailto:justyn@matyx.com">justyn@matyx.com</a></p>
+        <p>20808 Road 21.5, Lewis, Colorado 81327</p>
+      </div>
+    </div>
+
+    <!-- Form backend not wired yet — submit composes an email as an interim measure -->
+    <div class="form-card rv rv-d1">
+      <div class="form-head">
+        <h2>Let&rsquo;s talk.</h2>
+        <p>A few details about your dealership and we'll take it from there.</p>
+      </div>
+      <form id="contactForm">
+        <div class="field-row">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="Name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-company">Dealership</label>
+            <input id="f-company" name="Dealership" type="text" autocomplete="organization" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-phone">Phone</label>
+            <input id="f-phone" name="Phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="Email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-website">Website</label>
+          <input id="f-website" name="Website" type="text" inputmode="url" placeholder="yourdealership.com">
+        </div>
+        <div class="field">
+          <label for="f-area">Service area</label>
+          <input id="f-area" name="Service area" type="text" placeholder="e.g. Tucson metro + surrounding counties">
+        </div>
+        <div class="field">
+          <label for="f-msg">What are you trying to grow?</label>
+          <textarea id="f-msg" name="Message" placeholder="Leads, installs, reviews, a market you want to own…"></textarea>
+        </div>
+        <button class="btn btn-blue" type="submit">Send Message</button>
+        <p class="form-alt">Prefer the phone? <a href="tel:+18666710176">(866) 671-0176</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLIENT LOGOS ================= -->
+<section class="clients" aria-label="Clients">
+  <div class="wrap clients-inner">
+    <div class="clients-label"><span class="eyebrow">Trusted by the 60+ top local water treatment dealers</span></div>
+    <div class="logo-row">
+      <img src="assets/clients/quality.png" alt="Quality Home Products of Texas">
+      <img src="assets/clients/hawk.png" alt="Hawkins Water Tech">
+      <img src="assets/clients/moore.png" alt="Moore Water &amp; Air">
+      <img src="assets/clients/pure-southern.png" alt="Pure Southern Water">
+      <img src="assets/clients/ecosocal.png" alt="EcoWater Southern California">
+      <img src="assets/clients/san.png" alt="San Antonio Water Solutions">
+      <img src="assets/clients/shell.png" alt="Shell Water Systems">
+      <img src="assets/clients/state.png" alt="State Soft Water">
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROOF ================= -->
+<section class="contact-proof">
+  <div class="wrap">
+    <figure class="contact-quote rv">
+      <span class="stars" aria-label="5 stars">★★★★★</span>
+      <blockquote>&ldquo;We went from a negative ROI to an increased return of 1,200%+ in just two short months, with lead costs averaging $90.&rdquo;</blockquote>
+      <figcaption>Chris Certain &middot; Certain Services, Inc.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="assets/logos/logo-ice.svg" alt="Matyx">
+      <p>Specialized digital marketing and tech for residential water treatment dealers. Lamplight Digital Media is now Matyx.</p>
+      <p class="footer-holdco"><a href="https://barrel-holdings.com" target="_blank" rel="noopener">A Barrel Holdings company.</a></p>
+    </div>
+    <div>
+      <h4>Links</h4>
+      <ul>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#work">Results</a></li>
+        <li><a href="index.html#testimonials">Testimonials</a></li>
+        <li><a href="index.html#packages">Packages</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="index.html#services">Local SEO</a></li>
+        <li><a href="index.html#services">Google &amp; Facebook Ads</a></li>
+        <li><a href="index.html#services">Website Development</a></li>
+        <li><a href="index.html#services">Reputation Management</a></li>
+        <li><a href="index.html#services">Email Marketing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+18666710176">(866) 671-0176</a></li>
+        <li><a href="mailto:justyn@matyx.com">justyn@matyx.com</a></li>
+        <li>20808 Road 21.5<br>Lewis, Colorado 81327</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Matyx. All rights reserved.</span>
+    <span>Privacy &middot; Cookies &middot; Terms &middot; Accessibility</span>
+  </div>
+</footer>
+
+<!-- Sticky click-to-call bar (mobile only) -->
+<a class="call-bar" href="tel:+18666710176">Call (866) 671-0176</a>
+
+<script>
+// Reveal on scroll
+(function () {
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(function (el) { el.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+// Interim submit: compose an email from the form fields until a real backend is wired
+(function () {
+  var form = document.getElementById("contactForm");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var data = new FormData(form);
+    var lines = [];
+    data.forEach(function (value, key) { if (value) lines.push(key + ": " + value); });
+    var subject = "Website inquiry — " + (data.get("Dealership") || data.get("Name") || "new dealer");
+    window.location.href = "mailto:justyn@matyx.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+  });
+})();
+</script>
+</body>
+</html>
