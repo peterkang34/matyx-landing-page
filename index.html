@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matyx — Digital Marketing &amp; Tech for Water Treatment Dealers</title>
+<meta name="description" content="Lamplight Digital Media is now Matyx. Specialized digital marketing and tech for residential water treatment dealers — more leads, less stress, bigger impact.">
+
+<link rel="icon" type="image/svg+xml" href="assets/logos/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Archivo:wght@800&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   MATYX — brand tokens (MATYX-BRAND.md v1.0)
+   ============================================================ */
+@font-face {
+  font-family: "Druk Text Wide";
+  /* TRIAL font for layout only — swap in licensed Commercial Type webfont before publishing */
+  src: url("assets/fonts/DrukTextWide-Medium.otf") format("opentype");
+  font-weight: 500 800;
+  font-display: swap;
+}
+
+:root {
+  --matyx-blue: #1D72D2;
+  --navy:       #0D2B52;
+  --midnight:   #040F1E;
+  --ice:        #E9EDF5;
+  --off-white:  #F7F8FA;
+  --white:      #FFFFFF;
+
+  --font-display: "Druk Text Wide", "Archivo", system-ui, sans-serif;
+  --font-body:    "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  --hairline-dark:  rgba(13, 43, 82, 0.16);
+  --hairline-ice:   rgba(233, 237, 245, 0.22);
+
+  --pad-x: clamp(20px, 4vw, 48px);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  overflow-x: clip;
+  font-family: var(--font-body);
+  color: var(--midnight);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--matyx-blue); color: var(--white); }
+
+/* contained layout */
+.wrap { max-width: 1160px; margin-inline: auto; padding-inline: var(--pad-x); }
+.section { padding-block: clamp(64px, 8vw, 108px); }
+.section-head { margin-bottom: clamp(32px, 4vw, 52px); }
+.section-head .eyebrow { color: var(--matyx-blue); margin-bottom: 16px; display: block; }
+.section-head p.sub { margin-top: 14px; max-width: 52ch; font-size: 15.5px; color: var(--navy); }
+
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+}
+h2.display { color: var(--navy); font-size: clamp(26px, 3.4vw, 46px); max-width: 22ch; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background .22s ease, color .22s ease, border-color .22s ease;
+  white-space: nowrap;
+}
+.btn-blue  { background: var(--matyx-blue); color: var(--white); }
+.btn-blue:hover { background: var(--navy); }
+.btn-outline-ice { border-color: rgba(233,237,245,.55); color: var(--ice); background: transparent; }
+.btn-outline-ice:hover { background: var(--ice); color: var(--navy); border-color: var(--ice); }
+.btn-outline-navy { border-color: rgba(13,43,82,.4); color: var(--navy); background: transparent; }
+.btn-outline-navy:hover { background: var(--navy); color: var(--ice); border-color: var(--navy); }
+.btn-white { background: var(--white); color: var(--navy); }
+.btn-white:hover { background: var(--ice); }
+
+.rv { opacity: 0; transform: translateY(20px); transition: opacity .6s cubic-bezier(.2,.65,.25,1), transform .6s cubic-bezier(.2,.65,.25,1); }
+.rv.in { opacity: 1; transform: none; }
+.rv-d1 { transition-delay: .07s; } .rv-d2 { transition-delay: .14s; } .rv-d3 { transition-delay: .21s; }
+@media (prefers-reduced-motion: reduce) {
+  .rv { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* framed grid — the structured container device */
+.frame { border: 1px solid var(--hairline-dark); }
+
+/* ============================================================
+   ANNOUNCEMENT + NAV
+   ============================================================ */
+.announce {
+  background: var(--midnight);
+  color: var(--ice);
+  text-align: center;
+  padding: 9px var(--pad-x);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.announce em { font-style: normal; color: var(--matyx-blue); font-weight: 600; }
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--hairline-dark);
+}
+.nav-inner {
+  max-width: 1160px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px var(--pad-x);
+  gap: 24px;
+}
+.nav-logo img { height: 24px; }
+.nav-links { display: flex; align-items: center; gap: clamp(14px, 2vw, 30px); }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--navy); position: relative; }
+.nav-links a:not(.btn)::after {
+  content: "";
+  position: absolute; left: 0; bottom: -4px;
+  width: 0; height: 1px;
+  background: var(--matyx-blue);
+  transition: width .25s ease;
+}
+.nav-links a:not(.btn):hover::after { width: 100%; }
+.nav-links .btn { padding: 10px 22px; }
+.nav-phone { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; }
+@media (max-width: 980px) { .nav-links a:not(.btn) { display: none; } }
+
+/* ============================================================
+   HERO — split: copy on solid ground, photo framed at right
+   ============================================================ */
+.hero { background: var(--white); border-bottom: 1px solid var(--hairline-dark); }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: clamp(28px, 4vw, 52px);
+  align-items: center;
+  padding-block: clamp(56px, 7vw, 96px);
+}
+.hero-copy .eyebrow { color: var(--matyx-blue); margin-bottom: 22px; display: block; }
+.hero-h1 { color: var(--navy); font-size: clamp(28px, 3.3vw, 47px); }
+.hero-h1 span { display: block; }
+.hero-h1 .accent { color: var(--matyx-blue); }
+.hero-sub { margin-top: 22px; font-size: clamp(15px, 1.25vw, 17px); color: var(--midnight); max-width: 42ch; }
+.hero-actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-trust { margin-top: 28px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); opacity: .65; }
+
+.hero-media { position: relative; }
+.hero-media .photo {
+  border: 1px solid var(--hairline-dark);
+  aspect-ratio: 4 / 4.6;
+  overflow: hidden;
+}
+.hero-media .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 65% 40%; }
+.hero-media .plate {
+  position: relative;
+  margin-top: 0;
+  background: var(--matyx-blue);
+  border: 1px solid var(--hairline-dark);
+  border-top: none;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  overflow: hidden;
+}
+.hero-media .plate::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: url("assets/imagery/water-shader.png") center/cover;
+  mix-blend-mode: soft-light;
+  opacity: .85;
+}
+.hero-media .plate > * { position: relative; }
+.hero-media .plate .eyebrow { color: var(--white); font-size: 10.5px; }
+.hero-media .plate img { height: 18px; }
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-media .photo { aspect-ratio: 16 / 10; }
+}
+
+/* hero notification toasts */
+.toast {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1px solid var(--hairline-dark);
+  padding: 11px 16px;
+  max-width: 240px;
+}
+.toast strong { display: block; font-size: 12.5px; font-weight: 600; color: var(--navy); line-height: 1.3; }
+.toast span { font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); opacity: .55; }
+.t-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--matyx-blue); }
+.toast-1 { left: -34px; top: 14%; animation: toastFloat 5s ease-in-out infinite; }
+.toast-2 { right: -18px; bottom: 16%; animation: toastFloat 5s ease-in-out 2.5s infinite; }
+@keyframes toastFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@media (prefers-reduced-motion: reduce) { .toast-1, .toast-2 { animation: none; } }
+@media (max-width: 900px) {
+  .toast-1 { left: 12px; }
+  .toast-2 { right: 12px; }
+}
+
+/* ============================================================
+   CLIENT LOGOS — quiet, framed strip
+   ============================================================ */
+.clients { border-bottom: 1px solid var(--hairline-dark); background: var(--off-white); }
+.clients-inner { padding-block: 34px; }
+.clients-label { text-align: center; margin-bottom: 22px; }
+.clients-label .eyebrow { color: var(--navy); opacity: .6; font-size: 11px; }
+.logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(24px, 4vw, 52px);
+}
+.logo-row img {
+  height: 40px;
+  width: auto;
+  max-width: 128px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(.55) opacity(.55);
+  transition: filter .25s ease;
+}
+.logo-row img:hover { filter: none; }
+.clients-networks {
+  margin-top: 20px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: .65;
+}
+
+/* ============================================================
+   DATA / DASHBOARD
+   ============================================================ */
+.data-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+.data-copy p { margin-top: 14px; max-width: 48ch; font-size: 15.5px; color: var(--midnight); }
+.data-points {
+  margin-top: 24px;
+  list-style: none;
+  border-top: 1px solid var(--hairline-dark);
+  display: grid;
+}
+.data-points li {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--hairline-dark);
+  font-size: 14px;
+  color: var(--navy);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.data-points li::before { content: "→"; color: var(--matyx-blue); font-family: var(--font-mono); font-size: 12px; }
+.data-shot { border: 1px solid var(--hairline-dark); background: var(--off-white); padding: 18px 18px 0; max-width: 420px; justify-self: end; }
+.data-shot img { width: 100%; border: 1px solid var(--hairline-dark); border-bottom: none; }
+.data-shot figcaption { display: block; padding: 12px 2px; font-size: 10px; color: var(--navy); opacity: .6; }
+@media (max-width: 900px) {
+  .data-grid { grid-template-columns: 1fr; }
+  .data-shot { justify-self: start; }
+}
+
+/* ============================================================
+   MARKET SCAN
+   ============================================================ */
+.scan-section { background: var(--off-white); border-top: 1px solid var(--hairline-dark); }
+.scan-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+.scan-copy p { margin-top: 14px; max-width: 48ch; font-size: 15.5px; color: var(--midnight); }
+.scan-shot { border: 1px solid var(--hairline-dark); background: var(--white); padding: 18px 18px 0; }
+.scan-shot img { width: 100%; border: 1px solid var(--hairline-dark); border-bottom: none; }
+.scan-shot figcaption { display: block; padding: 12px 2px; font-size: 10px; color: var(--navy); opacity: .6; }
+@media (max-width: 900px) {
+  .scan-grid { grid-template-columns: 1fr; }
+  .scan-shot { order: 2; }
+}
+
+/* ============================================================
+   COMPARISON
+   ============================================================ */
+.compare-table { background: var(--white); }
+.compare-row {
+  display: grid;
+  grid-template-columns: minmax(120px, .6fr) 1fr 1fr;
+  border-bottom: 1px solid var(--hairline-dark);
+}
+.compare-row:last-child { border-bottom: none; }
+.compare-row > div { padding: 16px 22px; font-size: 14px; }
+.compare-row .c-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: .55;
+  align-self: center;
+}
+.compare-row .c-them { color: var(--navy); opacity: .55; border-left: 1px solid var(--hairline-dark); }
+.compare-row .c-us { color: var(--navy); font-weight: 500; border-left: 1px solid var(--hairline-dark); background: rgba(29,114,210,.05); }
+.compare-head-row { background: var(--off-white); }
+.compare-head-row > div {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding-block: 12px;
+}
+.compare-head-row .c-them { opacity: .55; font-weight: 500; }
+.compare-head-row .c-us { color: var(--matyx-blue); font-weight: 600; background: rgba(29,114,210,.08); }
+@media (max-width: 760px) {
+  .compare-row { grid-template-columns: 1fr; }
+  .compare-row > div { border-left: none !important; padding: 10px 18px; }
+  .compare-row .c-label { padding-top: 16px; padding-bottom: 0; }
+  .compare-row .c-us { padding-bottom: 16px; }
+  .compare-head-row { display: none; }
+  .compare-row .c-them::before { content: "Them: "; font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+  .compare-row .c-us::before { content: "Matyx: "; font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--matyx-blue); }
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+.faq-list { border-top: 1px solid var(--hairline-dark); }
+.faq { border-bottom: 1px solid var(--hairline-dark); }
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 18px 2px;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--matyx-blue); font-size: 16px; }
+.faq[open] summary::after { content: "–"; }
+.faq p { padding: 0 2px 20px; font-size: 14.5px; color: var(--midnight); max-width: 62ch; }
+@media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   TRUST ROW (packages)
+   ============================================================ */
+.trust-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--hairline-ice);
+  border-top: none;
+}
+.trust-cell { padding: 20px 26px 24px; border-right: 1px solid var(--hairline-ice); }
+.trust-cell:last-child { border-right: none; }
+.trust-cell h3 {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--matyx-blue);
+  margin-bottom: 6px;
+}
+.trust-cell p { font-size: 13.5px; color: rgba(233,237,245,.85); }
+@media (max-width: 700px) {
+  .trust-row { grid-template-columns: 1fr; }
+  .trust-cell { border-right: none; border-bottom: 1px solid var(--hairline-ice); }
+  .trust-cell:last-child { border-bottom: none; }
+}
+
+/* ============================================================
+   STICKY CALL BAR (mobile)
+   ============================================================ */
+.call-bar { display: none; }
+@media (max-width: 760px) {
+  .call-bar {
+    display: block;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 200;
+    background: var(--matyx-blue);
+    color: var(--white);
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 15px 16px calc(15px + env(safe-area-inset-bottom, 0px));
+  }
+  .footer-bottom { padding-bottom: 74px; }
+}
+
+/* ============================================================
+   ABOUT — short, two-column
+   ============================================================ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+.about-right p { font-size: 16px; color: var(--midnight); max-width: 50ch; }
+.about-right .stat { margin-top: 28px; display: flex; align-items: baseline; gap: 14px; }
+.about-right .stat .num { font-family: var(--font-display); font-size: 40px; color: var(--matyx-blue); line-height: 1; }
+.about-right .stat .lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: .11em; text-transform: uppercase; color: var(--navy); opacity: .7; }
+.pillar-row {
+  margin-top: clamp(36px, 5vw, 56px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.pillar-row .cell { padding: 22px 24px 26px; border-right: 1px solid var(--hairline-dark); }
+.pillar-row .cell:last-child { border-right: none; }
+.pillar-row h3 { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); margin-bottom: 8px; }
+.pillar-row p { font-size: 13.5px; color: var(--midnight); }
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .pillar-row { grid-template-columns: 1fr 1fr; }
+  .pillar-row .cell { border-bottom: 1px solid var(--hairline-dark); }
+  .pillar-row .cell:nth-child(2n) { border-right: none; }
+  .pillar-row .cell:nth-child(n+3) { border-bottom: none; }
+}
+
+/* ============================================================
+   SERVICES — framed 3×2, one-liners
+   ============================================================ */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.service {
+  padding: 30px 28px 34px;
+  border-right: 1px solid var(--hairline-dark);
+  transition: background .3s ease;
+}
+.service:nth-child(3n) { border-right: none; }
+.service:nth-child(-n+3) { border-bottom: 1px solid var(--hairline-dark); }
+.service:hover { background: var(--off-white); }
+.service .num { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; color: var(--matyx-blue); display: block; margin-bottom: 16px; }
+.service h3 { font-size: 16.5px; font-weight: 600; color: var(--navy); line-height: 1.3; margin-bottom: 10px; }
+.service p { font-size: 14px; color: var(--midnight); }
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .service { border-right: none !important; border-bottom: 1px solid var(--hairline-dark); }
+  .service:last-child { border-bottom: none; }
+}
+
+/* ============================================================
+   METRICS — navy band, contained content
+   ============================================================ */
+.metrics-band { background: var(--navy); position: relative; overflow: hidden; }
+.metrics-band::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: url("assets/imagery/water-shader.png") center/cover;
+  mix-blend-mode: soft-light;
+  opacity: .22;
+}
+.metrics-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-block: clamp(44px, 5vw, 64px);
+}
+.metric { padding-inline: 28px; border-right: 1px solid var(--hairline-ice); }
+.metric:first-child { padding-left: 0; }
+.metric:last-child { border-right: none; }
+.metric .num { font-family: var(--font-display); font-size: clamp(30px, 3vw, 46px); color: var(--white); line-height: 1; }
+.metric .num em { font-style: normal; color: var(--matyx-blue); }
+.metric .lbl { margin-top: 10px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ice); opacity: .8; }
+.metric .src { margin-top: 6px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--matyx-blue); }
+@media (max-width: 900px) {
+  .metrics-grid { grid-template-columns: 1fr 1fr; gap: 32px 0; }
+  .metric:nth-child(2) { border-right: none; }
+  .metric:nth-child(3) { padding-left: 0; }
+}
+
+/* ============================================================
+   WORK — 3 framed case cards
+   ============================================================ */
+.work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.case {
+  border: 1px solid var(--hairline-dark);
+  padding: 28px 28px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: background .3s ease;
+}
+.case:hover { background: var(--off-white); }
+.case .tag { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); opacity: .6; }
+.case .result { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(28px, 2.6vw, 40px); line-height: 1; color: var(--matyx-blue); }
+.case .result small { display: block; font-size: .42em; color: var(--navy); margin-top: 8px; }
+.case p { font-size: 14px; }
+.case ul { list-style: none; display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 8px; }
+.case li {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  border: 1px solid var(--hairline-dark);
+  padding: 5px 10px;
+}
+@media (max-width: 900px) { .work-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   TESTIMONIALS — 2 videos + 4 short quotes
+   ============================================================ */
+.testi-section { background: var(--off-white); border-block: 1px solid var(--hairline-dark); }
+.video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.video-card { border: 1px solid var(--hairline-dark); background: var(--white); }
+.video-card .embed { aspect-ratio: 16 / 9; }
+.video-card iframe { width: 100%; height: 100%; display: block; border: 0; }
+.video-card .cap {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--hairline-dark);
+}
+.video-card .cap .who { font-weight: 600; font-size: 13.5px; color: var(--navy); }
+.video-card .cap .eyebrow { font-size: 10px; color: var(--navy); opacity: .55; }
+.quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.quote-card {
+  border: 1px solid var(--hairline-dark);
+  background: var(--white);
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.quote-card .stars { color: var(--matyx-blue); font-size: 12px; letter-spacing: 4px; }
+.quote-card blockquote { font-size: 15px; color: var(--midnight); }
+.quote-card figcaption { margin-top: auto; }
+.quote-card .who { font-weight: 600; font-size: 13px; color: var(--navy); display: inline; }
+.quote-card .co { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .09em; text-transform: uppercase; color: var(--navy); opacity: .6; margin-top: 4px; }
+@media (max-width: 900px) { .video-grid, .quote-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   PACKAGES — framed 4-col, trimmed
+   ============================================================ */
+.packages-section { background: var(--midnight); position: relative; overflow: hidden; }
+.packages-watermark {
+  position: absolute; right: -8%; top: -14%;
+  width: 46vw; min-width: 480px;
+  opacity: .07; pointer-events: none;
+}
+.packages-watermark path { fill: none; stroke: var(--ice); stroke-width: 1; }
+.packages-section .section-head h2 { color: var(--ice); }
+.packages-section .section-head p.sub { color: rgba(233,237,245,.75); }
+.packages-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--hairline-ice);
+}
+.pack {
+  padding: 30px 26px 34px;
+  border-right: 1px solid var(--hairline-ice);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pack:last-child { border-right: none; }
+.pack.popular { background: rgba(29,114,210,.14); }
+.pack-tag {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--matyx-blue);
+  padding: 4px 9px;
+  align-self: flex-start;
+}
+.pack-name { font-family: var(--font-display); text-transform: uppercase; font-size: clamp(20px, 1.8vw, 26px); color: var(--white); line-height: 1; }
+.pack-base { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: rgba(233,237,245,.5); }
+.pack ul { list-style: none; display: grid; gap: 9px; }
+.pack li { font-size: 13px; color: rgba(233,237,245,.9); display: flex; align-items: baseline; gap: 10px; }
+.pack li::before { content: "→"; color: var(--matyx-blue); font-family: var(--font-mono); font-size: 11px; }
+.pack .btn { align-self: flex-start; margin-top: auto; }
+@media (max-width: 1000px) {
+  .packages-grid { grid-template-columns: 1fr 1fr; }
+  .pack { border-bottom: 1px solid var(--hairline-ice); }
+  .pack:nth-child(2n) { border-right: none; }
+  .pack:nth-child(n+3) { border-bottom: none; }
+}
+@media (max-width: 600px) {
+  .packages-grid { grid-template-columns: 1fr; }
+  .pack { border-right: none !important; border-bottom: 1px solid var(--hairline-ice); }
+  .pack:last-child { border-bottom: none; }
+}
+
+/* ============================================================
+   PROCESS — one tight row
+   ============================================================ */
+.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.process-note {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: .65;
+}
+.step { padding: 24px 22px 28px; border-right: 1px solid var(--hairline-dark); }
+.step:last-child { border-right: none; }
+.step-num { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; color: var(--matyx-blue); display: block; margin-bottom: 14px; }
+.step h3 { font-size: 14.5px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+.step p { font-size: 13px; color: var(--midnight); }
+@media (max-width: 900px) {
+  .process-grid { grid-template-columns: 1fr; }
+  .step { border-right: none; border-bottom: 1px solid var(--hairline-dark); display: grid; grid-template-columns: 64px 1fr; gap: 0 16px; align-items: baseline; }
+  .step .step-num { margin-bottom: 0; }
+  .step h3 { grid-column: 2; }
+  .step p { grid-column: 2; }
+  .step:last-child { border-bottom: none; }
+}
+
+/* ============================================================
+   BLOG — 3 compact cards
+   ============================================================ */
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.post {
+  border: 1px solid var(--hairline-dark);
+  padding: 24px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background .3s ease;
+}
+.post:hover { background: var(--off-white); }
+.post .date { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .11em; text-transform: uppercase; color: var(--navy); opacity: .55; }
+.post h3 { font-size: 16.5px; font-weight: 600; color: var(--navy); line-height: 1.35; }
+.post .more { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--matyx-blue); margin-top: auto; }
+@media (max-width: 900px) { .blog-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   CTA — shader band, contained copy
+   ============================================================ */
+.cta {
+  position: relative;
+  background: linear-gradient(155deg, var(--matyx-blue) 0%, var(--navy) 72%, var(--midnight) 100%);
+  overflow: hidden;
+}
+.cta::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: url("assets/imagery/water-shader.png") center/cover;
+  mix-blend-mode: soft-light;
+  opacity: .55;
+}
+.cta::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(4,15,30,0) 30%, rgba(4,15,30,.5) 100%);
+  pointer-events: none;
+}
+.cta-inner {
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(72px, 9vw, 128px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 26px;
+}
+.cta-inner .eyebrow { color: var(--ice); opacity: .85; }
+.cta .cta-h2 { color: var(--white); font-size: clamp(30px, 4.4vw, 64px); max-width: 18ch; }
+.cta-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.cta-note { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(233,237,245,.65); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { background: var(--midnight); color: var(--ice); border-top: 1px solid var(--hairline-ice); }
+.footer-inner {
+  padding-block: clamp(48px, 6vw, 72px) 36px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-brand img { height: 24px; margin-bottom: 18px; }
+.footer-brand p { max-width: 32ch; font-size: 13.5px; color: rgba(233,237,245,.7); }
+.footer-holdco { margin-top: 16px; }
+.footer-holdco a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(233,237,245,.55);
+  border-bottom: 1px solid rgba(233,237,245,.25);
+  padding-bottom: 2px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.footer-holdco a:hover { color: var(--matyx-blue); border-color: var(--matyx-blue); }
+.footer h4 {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(233,237,245,.5);
+  margin-bottom: 16px;
+}
+.footer ul { list-style: none; display: grid; gap: 9px; }
+.footer ul a, .footer ul li { font-size: 13px; color: var(--ice); transition: color .2s ease; }
+.footer ul a:hover { color: var(--matyx-blue); }
+.footer-bottom {
+  border-top: 1px solid var(--hairline-ice);
+  padding-block: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(233,237,245,.55);
+}
+@media (max-width: 900px) { .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; } }
+@media (max-width: 560px) { .footer-inner { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- ================= ANNOUNCEMENT ================= -->
+<div class="announce">Lamplight Digital Media is now <em>Matyx</em></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top" aria-label="Matyx home">
+      <img src="assets/logos/logo-primary.svg" alt="Matyx">
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#work">Results</a>
+      <a href="#testimonials">Clients</a>
+      <a href="#packages">Packages</a>
+      <a class="nav-phone" href="tel:+18666710176">(866) 671-0176</a>
+      <a class="btn btn-blue" href="#contact">Let&rsquo;s Talk</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow rv">Digital Marketing &amp; Tech for Residential Water Treatment Dealers</span>
+      <h1 class="display hero-h1">
+        <span class="rv">More leads.</span>
+        <span class="rv rv-d1">Less stress.</span>
+        <span class="rv rv-d2 accent">Bigger impact.</span>
+      </h1>
+      <p class="hero-sub rv rv-d2">Booked water tests and installs — not impressions. From a team that works with water treatment dealers and nobody else.</p>
+      <div class="hero-actions rv rv-d3">
+        <!-- VET: free market scan offer — confirm the team will fulfill this diagnostic before launch -->
+        <a class="btn btn-blue" href="#contact">Get a Free Market Scan</a>
+        <a class="btn btn-outline-navy" href="#services">See Services</a>
+      </div>
+      <p class="hero-trust rv rv-d3">Trusted by the 60+ top local water treatment dealers</p>
+    </div>
+    <div class="hero-media rv rv-d1">
+      <div class="photo">
+        <img src="assets/imagery/mom-daughter-green-island.jpg" alt="A mother and daughter share a glass of water at their kitchen island" fetchpriority="high">
+      </div>
+      <!-- VET: illustrative lead-notification vignettes — representative job types/values, not specific client claims -->
+      <div class="toast toast-1" aria-hidden="true">
+        <span class="t-dot"></span>
+        <div><strong>Softener install — $6,400</strong><span>Booked via Google Ads</span></div>
+      </div>
+      <div class="toast toast-2" aria-hidden="true">
+        <span class="t-dot"></span>
+        <div><strong>Water test scheduled</strong><span>Map Pack &middot; this morning</span></div>
+      </div>
+      <div class="plate">
+        <span class="eyebrow">The Water Treatment Growth Platform</span>
+        <img src="assets/logos/icon-ice.svg" alt="" aria-hidden="true">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLIENT LOGOS ================= -->
+<section class="clients" aria-label="Clients">
+  <div class="wrap clients-inner">
+    <div class="clients-label"><span class="eyebrow">Trusted by the 60+ top local water treatment dealers</span></div>
+    <div class="logo-row">
+      <img src="assets/clients/quality.png" alt="Quality Home Products of Texas">
+      <img src="assets/clients/hawk.png" alt="Hawkins Water Tech">
+      <img src="assets/clients/moore.png" alt="Moore Water &amp; Air">
+      <img src="assets/clients/pure-southern.png" alt="Pure Southern Water">
+      <img src="assets/clients/ecosocal.png" alt="EcoWater Southern California">
+      <img src="assets/clients/san.png" alt="San Antonio Water Solutions">
+      <img src="assets/clients/shell.png" alt="Shell Water Systems">
+      <img src="assets/clients/state.png" alt="State Soft Water">
+    </div>
+    <!-- VET: confirm client roster supports naming these dealer networks -->
+    <p class="clients-networks">Independent dealers &amp; network affiliates — EcoWater &middot; Kinetico &middot; Culligan &middot; RainSoft</p>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="section-head" style="margin-bottom:0">
+        <span class="eyebrow rv">About us</span>
+        <h2 class="display rv rv-d1">We already know the space.</h2>
+      </div>
+      <div class="about-right rv rv-d2">
+        <p>We help residential water treatment dealers grow without blowing the budget. We know your buyers, your products — softeners, filtration, RO — and what it takes to bring better water to your community.</p>
+        <div class="stat">
+          <span class="num">60+</span>
+          <span class="lbl">Water treatment dealers served</span>
+        </div>
+      </div>
+    </div>
+    <div class="pillar-row frame rv rv-d2">
+      <div class="cell"><h3>Predictable Leads</h3><p>High-quality leads, consistently.</p></div>
+      <div class="cell"><h3>Market Domination</h3><p>Stand out and get chosen.</p></div>
+      <div class="cell"><h3>Industry Expertise</h3><p>Water treatment is all we do.</p></div>
+      <div class="cell"><h3>Profit-Focused</h3><p>Grow without overspending.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testi-section section" id="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow rv">Testimonials</span>
+      <h2 class="display rv rv-d1">What our clients say.</h2>
+    </div>
+    <div class="video-grid rv rv-d1">
+      <figure class="video-card">
+        <div class="embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/NvCfTpfBpXk" title="Clean Water of Virginia testimonial" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <figcaption class="cap">
+          <span class="who">Clean Water of Virginia</span>
+          <span class="eyebrow">Video testimonial</span>
+        </figcaption>
+      </figure>
+      <figure class="video-card">
+        <div class="embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/fwCjigZ-be4" title="Tri County Water Conditioning review" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <figcaption class="cap">
+          <span class="who">Tri County Water Conditioning</span>
+          <span class="eyebrow">Video review</span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="quote-grid">
+      <figure class="quote-card rv">
+        <span class="stars" aria-label="5 stars">★★★★★</span>
+        <blockquote>&ldquo;We went from a negative ROI to an increased return of 1,200%+ in just two short months, with lead costs averaging $90.&rdquo;</blockquote>
+        <figcaption><p class="who">Chris Certain</p><p class="co">Certain Services, Inc.</p></figcaption>
+      </figure>
+      <figure class="quote-card rv rv-d1">
+        <span class="stars" aria-label="5 stars">★★★★★</span>
+        <blockquote>&ldquo;They've improved our website performance by 1,000%&hellip; literally. We finally have measurable data to make informed marketing decisions.&rdquo;</blockquote>
+        <figcaption><p class="who">Curt VanCuren</p><p class="co">Hawkins Water Tech</p></figcaption>
+      </figure>
+      <figure class="quote-card rv rv-d2">
+        <span class="stars" aria-label="5 stars">★★★★★</span>
+        <blockquote>&ldquo;A team that knows water treatment specifically has increased our sales in each office by over 10%.&rdquo;</blockquote>
+        <figcaption><p class="who">Justin Tims</p><p class="co">Universal Water Systems</p></figcaption>
+      </figure>
+      <figure class="quote-card rv rv-d3">
+        <span class="stars" aria-label="5 stars">★★★★★</span>
+        <blockquote>&ldquo;Way more qualified leads than before — at a fraction of the cost they used to be.&rdquo;</blockquote>
+        <figcaption><p class="who">Drake Young</p><p class="co">Pure Southern Water</p></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow rv">Services</span>
+      <h2 class="display rv rv-d1">How we help you dominate your market.</h2>
+    </div>
+    <div class="services-grid frame rv rv-d2">
+      <article class="service">
+        <span class="num">01</span>
+        <h3>Local SEO</h3>
+        <p>Dominate the local search results with a lead-producing strategy crafted for your market.</p>
+      </article>
+      <article class="service">
+        <span class="num">02</span>
+        <h3>Google &amp; Facebook Ads</h3>
+        <p>Paid campaigns that show exactly what drives leads — and deliver real, cost-effective results.</p>
+      </article>
+      <article class="service">
+        <span class="num">03</span>
+        <h3>Website Development</h3>
+        <p>Fast, functional sites engineered for uptime, user experience, and lead delivery.</p>
+      </article>
+      <article class="service">
+        <span class="num">04</span>
+        <h3>Reviews &amp; Reputation</h3>
+        <p>Your Google profile is your storefront. We monitor, respond, and gather reviews — automation grew one dealer's reviews 94% in four months.</p>
+      </article>
+      <article class="service">
+        <span class="num">05</span>
+        <h3>Conversion Optimization</h3>
+        <p>Scientific split testing that turns the same traffic into more booked water tests.</p>
+      </article>
+      <article class="service">
+        <span class="num">06</span>
+        <h3>Service-Base Marketing</h3>
+        <p>Turn your customer base into booked revenue — salt &amp; filter reminders, review requests, and reactivation campaigns by email and SMS.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DATA / DASHBOARD ================= -->
+<section class="section data-section" id="data" style="padding-top:0">
+  <div class="wrap data-grid">
+    <div class="data-copy">
+      <span class="eyebrow rv">The platform</span>
+      <h2 class="display rv rv-d1">Data that actually works.</h2>
+      <p class="rv rv-d2">No mystery reports. A live dashboard shows every lead, call, click, and dollar — cost per lead, cost per install, and exactly where each customer came from.</p>
+      <ul class="data-points rv rv-d2">
+        <li>Every call recorded &amp; scored for lead quality</li>
+        <li>Ad spend traced from click to signed install</li>
+        <li>Your dashboard, your data — log in any time</li>
+      </ul>
+    </div>
+    <figure class="data-shot rv rv-d1">
+      <img src="assets/imagery/dash-1.jpg" alt="Live reporting dashboard: PPC spend, analytics, and cost per conversion" loading="lazy">
+      <figcaption class="eyebrow">Live client reporting dashboard</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= METRICS ================= -->
+<!-- Stats sourced from client testimonials & case studies on this page -->
+<section class="metrics-band" aria-label="Results">
+  <div class="wrap metrics-grid">
+    <div class="metric rv"><p class="num"><em>$90</em></p><p class="lbl">Avg. cost per lead — down from $400</p><p class="src">Certain Services, Inc.</p></div>
+    <div class="metric rv rv-d1"><p class="num"><em>$200K+</em></p><p class="lbl">Monthly sales — up from $80K</p><p class="src">Dealer case study</p></div>
+    <div class="metric rv rv-d2"><p class="num"><em>94%</em></p><p class="lbl">More Google reviews in 4 months</p><p class="src">Review automation</p></div>
+    <div class="metric rv rv-d3"><p class="num"><em>10%+</em></p><p class="lbl">Sales lift in every office</p><p class="src">Universal Water Systems</p></div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow rv">Previous work</span>
+      <h2 class="display rv rv-d1">Proof, not promises.</h2>
+    </div>
+    <div class="work-grid">
+      <article class="case rv">
+        <span class="tag">Water Treatment</span>
+        <p class="result">200% <small>Increase in sales</small></p>
+        <p>$80K to $200K+ in monthly sales from a fresh look &amp; fresh strategies.</p>
+        <ul><li>Custom website</li><li>Local SEO</li><li>Paid ads</li></ul>
+      </article>
+      <article class="case rv rv-d1">
+        <span class="tag">Home Service</span>
+        <p class="result">100% <small>Relaxed for once</small></p>
+        <p>&ldquo;We were able to take months off due to record sales!&rdquo;</p>
+        <ul><li>New website</li><li>Lead gen</li><li>SMS automation</li></ul>
+      </article>
+      <article class="case rv rv-d2">
+        <span class="tag">Water Treatment</span>
+        <p class="result">94% <small>More reviews</small></p>
+        <p>Review automation grew Google reviews 94% in only 4 months.</p>
+        <ul><li>Review automation</li><li>Paid ads</li><li>Landing pages</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPARISON ================= -->
+<section class="section compare-section" id="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow rv">The comparison</span>
+      <h2 class="display rv rv-d1">Same budget. Same market. Different outcome.</h2>
+    </div>
+    <div class="compare-table frame rv rv-d2">
+      <div class="compare-row compare-head-row">
+        <div class="c-label"></div>
+        <div class="c-them">Generalist agency</div>
+        <div class="c-us">Matyx</div>
+      </div>
+      <div class="compare-row">
+        <div class="c-label">Industry focus</div>
+        <div class="c-them">Any business with a credit card</div>
+        <div class="c-us">Water treatment dealers only</div>
+      </div>
+      <div class="compare-row">
+        <div class="c-label">Learning curve</div>
+        <div class="c-them">90 days to figure out what a softener is</div>
+        <div class="c-us">We know softeners, filtration, and RO — day one</div>
+      </div>
+      <div class="compare-row">
+        <div class="c-label">Reporting</div>
+        <div class="c-them">Vanity-metric PDFs and impression screenshots</div>
+        <div class="c-us">Calls recorded &amp; scored, cost per install tracked live</div>
+      </div>
+      <!-- VET: contract terms + asset ownership claims below -->
+      <div class="compare-row">
+        <div class="c-label">Contract</div>
+        <div class="c-them">12-month lock-in, auto-renew</div>
+        <div class="c-us">Month-to-month — we earn it every month</div>
+      </div>
+      <div class="compare-row">
+        <div class="c-label">Your assets</div>
+        <div class="c-them">Leave and the site &amp; data go dark</div>
+        <div class="c-us">You own the site, the data, and the leads</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PACKAGES ================= -->
+<section class="packages-section section" id="packages">
+  <svg class="packages-watermark" viewBox="0 0 140 72" aria-hidden="true">
+    <path d="M129.119 10L78.4253 46.7458V10L10 60.0673H23.2023C23.2023 60.0673 31.368 48.4744 42.7524 48.4744C54.1367 48.4744 54.2857 61.17 65.6701 61.17C74.1637 61.17 80.0645 48.5042 92.7303 48.5042C104.591 48.5042 104.264 61.1998 115.648 61.1998H115.916C123.069 61.0806 129.059 55.2096 129.119 48.0869V10Z"/>
+  </svg>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow rv" style="color:var(--matyx-blue)">Packages</span>
+      <h2 class="display rv rv-d1">Pick your growth stage.</h2>
+      <p class="sub rv rv-d2">Four ways to work together — from foundation to full market domination.</p>
+    </div>
+    <div class="packages-grid rv rv-d2">
+      <article class="pack">
+        <h3 class="pack-name">Build</h3>
+        <p class="pack-base">The foundation</p>
+        <ul>
+          <li>Website SEO optimization</li>
+          <li>Citations to 60+ directories</li>
+          <li>Google Business Profile &amp; map ranking</li>
+          <li>PPC setup w/ landing pages</li>
+          <li>Aquatyx CRM — unlimited users</li>
+          <li>Lead tracking &amp; reporting dashboard</li>
+          <li>Competitor insights</li>
+        </ul>
+        <a class="btn btn-outline-ice" href="#contact">Get Pricing</a>
+      </article>
+      <article class="pack">
+        <h3 class="pack-name">Grow</h3>
+        <p class="pack-base">Everything in Build, plus</p>
+        <ul>
+          <li>New template website</li>
+          <li>50+ optimized SEO keywords</li>
+          <li>Lead gen strategies w/ pre-built offers</li>
+          <li>Call listening &amp; lead quality reporting</li>
+          <li>Email marketing &amp; nurture cycles</li>
+          <li>Review automation w/ replies</li>
+          <li>Targeted paid social campaigns</li>
+        </ul>
+        <a class="btn btn-outline-ice" href="#contact">Get Pricing</a>
+      </article>
+      <article class="pack popular">
+        <span class="pack-tag">Popular</span>
+        <h3 class="pack-name">Scale</h3>
+        <p class="pack-base">Everything in Grow, plus</p>
+        <ul>
+          <li>Custom website, unlimited edits</li>
+          <li>Domination SEO — 50+ pages, 100+ keywords</li>
+          <li>Automatic lead follow-up &amp; appointment setting</li>
+          <li>SMS marketing w/ text back</li>
+          <li>Programmatic PPC w/ retargeting</li>
+          <li>Social content creation</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <a class="btn btn-blue" href="#contact">Get Pricing</a>
+      </article>
+      <article class="pack">
+        <h3 class="pack-name">Rocket</h3>
+        <p class="pack-base">Everything in Scale, plus</p>
+        <ul>
+          <li>Dedicated marketing team</li>
+          <li>Software development</li>
+          <li>Extreme business automation</li>
+          <li>Branding and messaging</li>
+          <li>Sales plan development &amp; automation</li>
+          <li>Exit strategy &amp; M&amp;A services</li>
+        </ul>
+        <a class="btn btn-outline-ice" href="#contact">Get Pricing</a>
+      </article>
+    </div>
+    <!-- VET: confirm territory exclusivity, month-to-month terms, and asset ownership before launch -->
+    <div class="trust-row rv">
+      <div class="trust-cell">
+        <h3>One dealer per market</h3>
+        <p>We don't work with your competitor.</p>
+      </div>
+      <div class="trust-cell">
+        <h3>Month-to-month</h3>
+        <p>We earn your business every month.</p>
+      </div>
+      <div class="trust-cell">
+        <h3>You own it all</h3>
+        <p>Your site, your data, your leads.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow rv">How it works</span>
+      <h2 class="display rv rv-d1">What happens, and when.</h2>
+    </div>
+    <!-- VET: timeline phase claims — confirm typical delivery pace with the team -->
+    <div class="process-grid frame rv rv-d2">
+      <article class="step">
+        <span class="step-num">Days 0&ndash;7</span>
+        <h3>Audit &amp; Market Scan</h3>
+        <p>Meet the team. We map your service area — rankings, reviews, competitors — and set the plan.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">Days 7&ndash;30</span>
+        <h3>Foundation</h3>
+        <p>Site live, Google Business Profile optimized, call &amp; lead tracking installed.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">Days 31&ndash;90</span>
+        <h3>Demand</h3>
+        <p>Campaigns live, water tests booking, review automation running. Weekly reporting.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">Month 4+</span>
+        <h3>Compound</h3>
+        <p>Cost per lead drops as data deepens. Rankings climb. You own more of your market.</p>
+      </article>
+    </div>
+    <p class="process-note rv rv-d2">Paid leads start in weeks. Map-pack dominance takes months. Anyone promising faster is guessing.</p>
+  </div>
+</section>
+
+<!-- ================= BLOG ================= -->
+<section class="section" id="blog" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow rv">News &amp; blog</span>
+      <h2 class="display rv rv-d1">Insights from the field.</h2>
+    </div>
+    <div class="blog-grid">
+      <!-- Blog post links are placeholders — point at migrated post URLs when ready -->
+      <a class="post rv" href="#blog">
+        <span class="date">April 15, 2025</span>
+        <h3>Building Brand Value for Water Treatment Dealers</h3>
+        <span class="more">Read more →</span>
+      </a>
+      <a class="post rv rv-d1" href="#blog">
+        <span class="date">April 15, 2025</span>
+        <h3>6 Tips to Get More Google Reviews &amp; Increase Consumer Trust</h3>
+        <span class="more">Read more →</span>
+      </a>
+      <a class="post rv rv-d2" href="#blog">
+        <span class="date">April 15, 2025</span>
+        <h3>Four Fundamental Website Principles for Online Success</h3>
+        <span class="more">Read more →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section faq-section" id="faq" style="padding-top:0">
+  <div class="wrap faq-grid">
+    <div class="section-head" style="margin-bottom:0">
+      <span class="eyebrow rv">FAQ</span>
+      <h2 class="display rv rv-d1">What dealers actually ask.</h2>
+    </div>
+    <div class="faq-list rv rv-d1">
+      <details class="faq">
+        <summary>How are you different from every other agency that's pitched us?</summary>
+        <p>We only work with water treatment dealers. No learning curve on your products, your buyers, or your seasonality — and 60+ dealers' worth of campaign data behind every decision we make.</p>
+      </details>
+      <details class="faq">
+        <summary>We've been burned by agencies before. Why trust you?</summary>
+        <p>Most of our clients came to us burned. That's why everything is verifiable: calls recorded and scored, every dollar traced from click to install, and a live dashboard you can check any time — not a monthly PDF.</p>
+      </details>
+      <!-- VET: contract terms -->
+      <details class="faq">
+        <summary>Do we have to sign a long-term contract?</summary>
+        <p>No. We work month-to-month and earn your business every month.</p>
+      </details>
+      <!-- VET: territory exclusivity policy -->
+      <details class="faq">
+        <summary>Do you work with our competitors?</summary>
+        <p>One dealer per market. If we work with you, we don't take your competitor's call.</p>
+      </details>
+      <details class="faq">
+        <summary>What does pricing look like?</summary>
+        <p>Four packages — Build, Grow, Scale, and Rocket — sized to where your dealership is today. Request pricing and we'll tell you which one actually fits, even if it's the cheapest one.</p>
+      </details>
+      <details class="faq">
+        <summary>How fast will we see leads?</summary>
+        <p>Paid campaigns typically produce booked appointments within the first few weeks. Organic rankings and map-pack dominance build over months — we'll show you the trajectory in your dashboard, not promise magic.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARKET SCAN ================= -->
+<!-- VET: free market scan offer — confirm the team will fulfill this diagnostic before launch -->
+<section class="scan-section section" id="scan">
+  <div class="wrap scan-grid">
+    <figure class="scan-shot rv">
+      <img src="assets/imagery/dash-2.jpg" alt="Local ranking grid scan showing map positions across a service area" loading="lazy">
+      <figcaption class="eyebrow">Ranking grid — one dealer's service area</figcaption>
+    </figure>
+    <div class="scan-copy">
+      <span class="eyebrow rv">Free market scan</span>
+      <h2 class="display rv rv-d1">See your market like we do.</h2>
+      <p class="rv rv-d2">We'll map your service area — where you rank block by block, how your reviews stack up against every competitor, and where the leads are going instead. Free, no pitch.</p>
+      <div class="rv rv-d3" style="margin-top:26px">
+        <a class="btn btn-blue" href="mailto:justyn@matyx.com?subject=Free%20market%20scan%20request">Get My Free Market Scan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta" id="contact">
+  <div class="wrap cta-inner">
+    <span class="eyebrow rv">Get in touch</span>
+    <h2 class="display cta-h2 rv rv-d1">Ready to dominate your market?</h2>
+    <div class="cta-actions rv rv-d2">
+      <a class="btn btn-white" href="mailto:justyn@matyx.com?subject=Free%20market%20scan%20request">Get My Free Market Scan</a>
+      <a class="btn btn-outline-ice" href="tel:+18666710176">Call (866) 671-0176</a>
+    </div>
+    <p class="cta-note rv rv-d3">Free market scan &middot; zero obligation &middot; 30 minutes</p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="assets/logos/logo-ice.svg" alt="Matyx">
+      <p>Specialized digital marketing and tech for residential water treatment dealers. Lamplight Digital Media is now Matyx.</p>
+      <p class="footer-holdco"><a href="https://barrel-holdings.com" target="_blank" rel="noopener">A Barrel Holdings company.</a></p>
+    </div>
+    <div>
+      <h4>Links</h4>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Results</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#packages">Packages</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Local SEO</a></li>
+        <li><a href="#services">Google &amp; Facebook Ads</a></li>
+        <li><a href="#services">Website Development</a></li>
+        <li><a href="#services">Reputation Management</a></li>
+        <li><a href="#services">Email Marketing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+18666710176">(866) 671-0176</a></li>
+        <li><a href="mailto:justyn@matyx.com">justyn@matyx.com</a></li>
+        <li>20808 Road 21.5<br>Lewis, Colorado 81327</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Matyx. All rights reserved.</span>
+    <!-- Legal pages (privacy, cookies, terms, SMS, accessibility) to be migrated as separate pages -->
+    <span>Privacy &middot; Cookies &middot; Terms &middot; Accessibility</span>
+  </div>
+</footer>
+
+<!-- Sticky click-to-call bar (mobile only) -->
+<a class="call-bar" href="tel:+18666710176">Call (866) 671-0176</a>
+
+<script>
+// Reveal on scroll
+(function () {
+  var els = document.querySelectorAll(".rv");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(function (el) { el.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
