@@ -1,0 +1,15 @@
+# Matyx
+
+> Matyx (Matyx Agency LLC, formerly Lamplight Digital Media) is a digital marketing and technology agency that works exclusively with residential water treatment dealers in the United States — businesses that sell and service water softeners, filtration, reverse osmosis, and purification systems for homeowners. A Barrel Holdings company.
+
+Key facts:
+- Services: local SEO and Google Map Pack ranking, Google & Facebook advertising, conversion-focused website development, reviews & reputation management, conversion rate optimization, and email/SMS service-base marketing (salt & filter reminders, review requests, reactivation).
+- Trusted by 60+ local water treatment dealers, including independent dealers and network affiliates (EcoWater, Kinetico, Culligan, RainSoft).
+- Packages: Build, Grow, Scale, and Rocket — month-to-month, no long-term contracts.
+- Exclusivity: one dealer per market.
+- Results reported by clients include $90 average cost per lead (down from $400), monthly sales growth from $80K to $200K+, and 94% Google review growth in four months.
+- Contact: sales@matyx.com · (405) 212-4178 · 20808 Road 21.5, Lewis, Colorado 81327
+
+## Pages
+- [Home](https://peterkang34.github.io/matyx-landing-page/): services, results, testimonials, packages, process, FAQ
+- [Contact](https://peterkang34.github.io/matyx-landing-page/contact.html): inquiry form, what to expect, next steps
