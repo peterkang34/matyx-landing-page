@@ -659,24 +659,6 @@ h2.display { color: var(--navy); font-size: clamp(26px, 3.4vw, 46px); max-width:
 }
 
 /* ============================================================
-   BLOG — 3 compact cards
-   ============================================================ */
-.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.post {
-  border: 1px solid var(--hairline-dark);
-  padding: 24px 26px 26px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: background .3s ease;
-}
-.post:hover { background: var(--off-white); }
-.post .date { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .11em; text-transform: uppercase; color: var(--navy); opacity: .55; }
-.post h3 { font-size: 16.5px; font-weight: 600; color: var(--navy); line-height: 1.35; }
-.post .more { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--matyx-blue); margin-top: auto; }
-@media (max-width: 900px) { .blog-grid { grid-template-columns: 1fr; } }
-
-/* ============================================================
    CTA — shader band, contained copy
    ============================================================ */
 .cta {
