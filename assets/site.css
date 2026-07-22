@@ -3,8 +3,8 @@
    ============================================================ */
 @font-face {
   font-family: "Druk Text Wide";
-  /* TRIAL font for layout only — swap in licensed Commercial Type webfont before publishing */
-  src: url("fonts/DrukTextWide-Medium.otf") format("opentype");
+  /* Licensed Commercial Type webfont (web license, matyx.com) */
+  src: url("fonts/DrukTextWide-Medium-Web.woff2") format("woff2");
   font-weight: 500 800;
   font-display: swap;
 }
